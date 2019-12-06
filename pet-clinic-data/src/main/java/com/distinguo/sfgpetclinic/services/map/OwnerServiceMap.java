@@ -1,15 +1,20 @@
 package com.distinguo.sfgpetclinic.services.map;
 
 import com.distinguo.sfgpetclinic.model.Owner;
-import com.distinguo.sfgpetclinic.services.CrudService;
+import com.distinguo.sfgpetclinic.services.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements CrudService<Owner,Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
     }
 
     @Override
