@@ -1,12 +1,12 @@
 package com.distinguo.sfgpetclinic.services.map;
 
 import com.distinguo.sfgpetclinic.model.Pet;
-import com.distinguo.sfgpetclinic.services.CrudService;
+import com.distinguo.sfgpetclinic.services.PetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
-public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudService<Pet,Long> {
+public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService{
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
