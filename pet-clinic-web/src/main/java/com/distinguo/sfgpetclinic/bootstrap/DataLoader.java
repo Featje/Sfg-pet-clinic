@@ -1,10 +1,7 @@
 package com.distinguo.sfgpetclinic.bootstrap;
 
 import com.distinguo.sfgpetclinic.model.*;
-import com.distinguo.sfgpetclinic.services.OwnerService;
-import com.distinguo.sfgpetclinic.services.PetTypeService;
-import com.distinguo.sfgpetclinic.services.SpecialtyService;
-import com.distinguo.sfgpetclinic.services.VetService;
+import com.distinguo.sfgpetclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,13 +14,23 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtiesService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
+    }
+
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtiesService, SpecialtyService specialtyService, VisitService visitService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+        this.petTypeService = petTypeService;
+        this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
 
@@ -89,6 +96,12 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(vincPet2);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(vincPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Cat");
+        visitService.save(catVisit);
 
         System.out.println("Loaded owners...");
 
