@@ -2,7 +2,6 @@ package com.distinguo.sfgpetclinic.bootstrap;
 
 import com.distinguo.sfgpetclinic.model.*;
 import com.distinguo.sfgpetclinic.services.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -23,16 +22,6 @@ public class DataLoader implements CommandLineRunner {
         this.specialtyService = specialtyService;
         this.visitService = visitService;
     }
-
-    @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtiesService, SpecialtyService specialtyService, VisitService visitService) {
-        this.ownerService = ownerService;
-        this.vetService = vetService;
-        this.petTypeService = petTypeService;
-        this.specialtyService = specialtyService;
-        this.visitService = visitService;
-    }
-
 
     @Override
     public void run(String... args) throws Exception {
